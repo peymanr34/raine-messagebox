@@ -31,7 +31,7 @@
         /// <summary>
         /// Gets the text to display in the title bar of the message box.
         /// </summary>
-        public string Caption { get; private set; }
+        public string? Caption { get; private set; }
 
         /// <summary>
         /// Gets the value that specifies which icon to display in the message box.
@@ -58,7 +58,7 @@
         /// </summary>
         /// <param name="value">The text to display in the message box.</param>
         /// <returns>A reference to this instance after setting the value.</returns>
-        public MessageBoxBuilder WithText(string value)
+        public MessageBoxBuilder WithText(string? value)
         {
             _builder.Clear();
             _builder.Append(value);
@@ -70,7 +70,7 @@
         /// </summary>
         /// <param name="value">The string to append.</param>
         /// <returns>A reference to this instance after the append operation has completed.</returns>
-        public MessageBoxBuilder WithAppend(string value)
+        public MessageBoxBuilder WithAppend(string? value)
         {
             _builder.Append(value);
             return this;
@@ -81,7 +81,7 @@
         /// </summary>
         /// <param name="value">The string to append.</param>
         /// <returns>A reference to this instance after the append operation has completed.</returns>
-        public MessageBoxBuilder WithAppendLine(string value = null)
+        public MessageBoxBuilder WithAppendLine(string? value = null)
         {
             _builder.AppendLine(value);
             return this;
@@ -92,7 +92,7 @@
         /// </summary>
         /// <param name="value">The text to display in the title bar of the message box.</param>
         /// <returns>A reference to this instance after setting the value.</returns>
-        public MessageBoxBuilder WithCaption(string value)
+        public MessageBoxBuilder WithCaption(string? value)
         {
             Caption = value;
             return this;
