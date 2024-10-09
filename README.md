@@ -12,7 +12,7 @@ Install-Package Raine.MessageBox -PreRelease
 ```
 
 > [!NOTE]
-> This package requires **.NET Framework 4.8** or **.NET 5.0+**
+> This package requires **.NET Framework 4.8** or **.NET 6.0+**
 
 ## Usage
 The following example shows how to build a simple message box.

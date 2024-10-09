@@ -3,16 +3,14 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Demo50
+namespace Demo
 {
     static class Program
     {
         [STAThread]
         static void Main()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            ApplicationConfiguration.Initialize();
 
             DialogResult result = new Raine.MessageBox.MessageBoxBuilder()
                 .WithAppendLine("Would you like to exit?")

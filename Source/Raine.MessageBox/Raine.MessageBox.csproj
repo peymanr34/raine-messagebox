@@ -1,9 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
+        <TargetFrameworks>net48;net6.0-windows</TargetFrameworks>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <UseWindowsForms>true</UseWindowsForms>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -16,10 +17,6 @@
 
     <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0-windows'">
-        <UseWindowsForms>true</UseWindowsForms>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -47,10 +44,6 @@
     <ItemGroup>
         <None Include="..\..\README.md" Pack="true" PackagePath="\" />
         <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
-        <Reference Include="System.Windows.Forms" />
     </ItemGroup>
 
     <ItemGroup>
