@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net4.8</TargetFramework>
         <OutputType>WinExe</OutputType>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>

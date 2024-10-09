@@ -2,27 +2,40 @@
 
     <PropertyGroup>
         <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-        <OutputType>Library</OutputType>
-        <LangVersion>8.0</LangVersion>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <PropertyGroup Condition=" '$(TargetFramework)' == 'net5.0-windows' ">
+    <PropertyGroup>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0-windows'">
         <UseWindowsForms>true</UseWindowsForms>
     </PropertyGroup>
 
     <PropertyGroup>
-        <AnalysisLevel>latest</AnalysisLevel>
-        <NoWarn>SA1101;SA1309;SA1633</NoWarn>
+        <AnalysisLevel>latest-all</AnalysisLevel>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+        <NoWarn>$(NoWarn);nullable</NoWarn>
     </PropertyGroup>
 
     <PropertyGroup>
-        <Version>1.0.0-preview.1</Version>
         <Authors>Peyman Mohammadi</Authors>
         <PackageId>Raine.MessageBox</PackageId>
         <Copyright>© 2021 Peyman Mohammadi</Copyright>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageTags>raine; messagebox; winforms; fluent</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -31,16 +44,17 @@
         <Description>A fluent interface for the Windows Forms MessageBox class.</Description>
     </PropertyGroup>
 
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
         <Reference Include="System.Windows.Forms" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="DotNet.ReproducibleBuilds" Version="0.1.64">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
